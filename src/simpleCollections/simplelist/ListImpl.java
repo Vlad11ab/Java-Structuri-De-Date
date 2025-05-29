@@ -1,10 +1,8 @@
-package simplelist;
+package simpleCollections.simplelist;
 
 import models.Car;
 
-import javax.swing.text.Position;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Comparator;
 
 public class ListImpl implements Lista {
     private Node head;
@@ -156,8 +154,19 @@ public class ListImpl implements Lista {
     }
 
     @Override
-    public void sortListByYear(){
-        Node aux = head;
+    public void sortList(Comparator<Car> comp){
+
+        boolean flag=false;
+        do{
+            flag=true;
+            for(int i=0;i<getSize();i++){
+                if(comp.compare(this.getData(i),this.getData(i+1))>0){
+                    swap(i, i+1);
+                    flag=false;
+                }
+            }
+
+        }while (flag==false);
 
 
     }
@@ -180,11 +189,47 @@ public class ListImpl implements Lista {
             aux.car = car;
         }
 
-
-
     }
 
+    private void swap(int posA, int posB){
+        Car temp = getData(posA);
+        setData(getData(posB),posA);
+        setData(temp, posB);
+    }
 
+    public Car getData(int position){
+        Node aux = head;
+
+        if(head == null){
+            System.out.println("Empty List");
+        }
+        else{
+            if(position==0){
+                return head.car;
+            }
+            int ct = 0;
+            while(ct != position-1 && aux.next != null){
+                aux = aux.next;
+                ct++;
+            }
+
+        }
+        return aux.car;
+    }
+
+    @Override
+    public int positionIndex() {
+        Node aux = head;
+        int i = 0;
+
+        do {
+            i++;
+            aux = aux.next;
+            return i;
+
+
+        }while(aux !=null);
+    }
 
 
 }

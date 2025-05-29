@@ -1,8 +1,8 @@
-package simplelist;
+package simpleCollections.simplelist;
 
 import models.Car;
 
-import javax.swing.text.Position;
+import java.util.Comparator;
 
 public interface Lista {
 
@@ -24,8 +24,13 @@ public interface Lista {
 
     void removeLast();
 
-    void sortListByYear();
+    void sortList(Comparator<Car> comp);
 
     void setData(Car car, int position);
+
+    Car getData(int position);
+
+    int positionIndex();
+
 
 }

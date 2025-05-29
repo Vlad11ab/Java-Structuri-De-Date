@@ -1,4 +1,4 @@
-package simplelist;
+package simpleCollections.queue;
 
 import models.Car;
 
