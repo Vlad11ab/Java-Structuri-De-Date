@@ -220,10 +220,13 @@ public class Main {
         genericQueue.offer("start");
         genericQueue.offer("stop");
         genericQueue.offer("ceva");
+        System.out.println(genericQueue.getFront());
+        System.out.println("--");
         genericQueue.peek();
         genericQueue.poll();
         genericQueue.peek();
         genericQueue.poll();
+
 
         System.out.println("=====================GenericStack===================");
 
@@ -241,8 +244,14 @@ public class Main {
         genericStack.peek();
 
 
-//        System.out.println("===========================LeetCode===================");
-//        LeetCode leetCode = new LeetCode();
-//        leetCode.isValid("()");
+        System.out.println("===========================LeetCode===================");
+        System.out.println("-1-");
+        LeetCode leetCode = new LeetCode();
+        System.out.println(leetCode.isValid("([])"));
+
+        System.out.println("-2-");
+        int tickets[] = {2,3,2};
+        System.out.println(leetCode.timeRequiredToBuy(tickets, 2));
+
     }
 }

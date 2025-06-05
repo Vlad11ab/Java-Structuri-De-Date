@@ -41,7 +41,7 @@ public class Stiva<S extends Comparable <S>> implements IStiva<S>{
             aux = head;
             head=head.next;
         }
-        System.out.println(aux.data);
+//        System.out.println(aux.data);
         size --;
         return aux.data;
     }
@@ -51,12 +51,12 @@ public class Stiva<S extends Comparable <S>> implements IStiva<S>{
         if(head == null){
            return null;
         }
-        System.out.println(head.data);
+//        System.out.println(head.data);
         return head.data;
     }
 
     @Override
     public Boolean isEmpty() {
-        return head!=null;
+        return head==null;
     }
 }

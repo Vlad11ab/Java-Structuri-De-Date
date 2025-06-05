@@ -39,7 +39,7 @@ public class Coada <C extends Comparable <C>> implements ICoada<C>{
             }
         }
         size --;
-        System.out.println(aux.data);
+//        System.out.println(aux.data);
         return aux.data;
     }
 
@@ -65,7 +65,7 @@ public class Coada <C extends Comparable <C>> implements ICoada<C>{
         while(aux.next != null){
             aux = aux.next;
         }
-        System.out.println(aux.data);
+//        System.out.println(aux.data);
         return aux.data;
     }
 
@@ -78,6 +78,11 @@ public class Coada <C extends Comparable <C>> implements ICoada<C>{
             return true;
         }
         else return false;
+    }
+
+    @Override
+    public C getFront() {
+        return front.data;
     }
 
 //    @Override

@@ -12,6 +12,8 @@ public interface ICoada <C extends Comparable <C>>{
 
     Boolean isEmpty();
 
+    C getFront();
+
 
 
 }
