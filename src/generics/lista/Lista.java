@@ -6,7 +6,7 @@ import generics.utils.Node;
 
 import java.util.Comparator;
 
-public class Lista<U extends Comparable<U>> implements ILista<U> {
+public class Lista<U extends Comparable<U>> implements ILista<U>{
     private Node<U> head;
 
 

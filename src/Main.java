@@ -1,4 +1,9 @@
+import generics.coada.Coada;
+import generics.coada.ICoada;
 import generics.lista.ILista;
+import generics.probleme.LeetCode;
+import generics.stiva.IStiva;
+import generics.stiva.Stiva;
 import models.Car;
 import models.comparators.CompareCarByPrice;
 import simpleCollections.stack.Stack;
@@ -8,6 +13,8 @@ import simpleCollections.queue.QueueImpl;
 import simpleCollections.simplelist.ListImpl;
 import simpleCollections.simplelist.Lista;
 import simpleCollections.simplelist.Node;
+
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -206,5 +213,36 @@ public class Main {
         genericList.addStart("test");
         genericList.addStart("ce mai faci");
         genericList.showList();
+
+        System.out.println("=====================GenericQueue===================");
+
+        ICoada<String> genericQueue = new Coada<>();
+        genericQueue.offer("start");
+        genericQueue.offer("stop");
+        genericQueue.offer("ceva");
+        genericQueue.peek();
+        genericQueue.poll();
+        genericQueue.peek();
+        genericQueue.poll();
+
+        System.out.println("=====================GenericStack===================");
+
+        IStiva<String> genericStack = new Stiva<>();
+        genericStack.push("start");
+        genericStack.push("stop");
+        genericStack.push("ceva");
+        genericStack.peek();
+        System.out.println("--");
+        genericStack.pop();
+        genericStack.peek();
+        genericStack.pop();
+        genericStack.peek();
+        genericStack.pop();
+        genericStack.peek();
+
+
+//        System.out.println("===========================LeetCode===================");
+//        LeetCode leetCode = new LeetCode();
+//        leetCode.isValid("()");
     }
 }
