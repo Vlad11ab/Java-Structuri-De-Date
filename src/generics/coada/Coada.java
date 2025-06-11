@@ -96,6 +96,11 @@ public class Coada <C extends Comparable <C>> implements ICoada<C>{
 //    }
 //    }
 
+    @Override
+    public int getSize(){
+        return size;
+    }
+
 
 }
 

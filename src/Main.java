@@ -2,6 +2,8 @@ import generics.coada.Coada;
 import generics.coada.ICoada;
 import generics.lista.ILista;
 import generics.probleme.LeetCode;
+import generics.probleme.RecentCounter;
+import generics.probleme.RecentCounter2;
 import generics.stiva.IStiva;
 import generics.stiva.Stiva;
 import models.Car;
@@ -252,6 +254,21 @@ public class Main {
         System.out.println("-2-");
         int tickets[] = {2,3,2};
         System.out.println(leetCode.timeRequiredToBuy(tickets, 2));
+
+        System.out.println("-3-");
+//        RecentCounter recentCounter = new RecentCounter();
+//        leetCode.ping(1);
+//        leetCode.ping(100);
+//        leetCode.ping(3001);
+//        leetCode.ping(3002);
+
+
+        RecentCounter2 rc2 = new RecentCounter2();
+        System.out.println(rc2.ping(1));
+        System.out.println(rc2.ping(100));
+        System.out.println(rc2.ping(3001));
+        System.out.println(rc2.ping(3002));
+
 
     }
 }

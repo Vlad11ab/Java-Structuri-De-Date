@@ -14,6 +14,8 @@ public interface ICoada <C extends Comparable <C>>{
 
     C getFront();
 
+    int getSize();
+
 
 
 }

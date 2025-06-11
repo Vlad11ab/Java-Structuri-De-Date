@@ -111,9 +111,87 @@ public class LeetCode {
     }
 
 
+//    3.You have a RecentCounter class which counts the number of recent requests within a certain time frame.
+//
+//    Implement the RecentCounter class:
+//
+//    RecentCounter() Initializes the counter with zero recent requests.
+//    int ping(int t) Adds a new request at time t, where t represents some time in milliseconds, and returns the number of requests that has happened in the past 3000 milliseconds (including the new request). Specifically, return the number of requests that have happened in the inclusive range [t - 3000, t].
+//    It is guaranteed that every call to ping uses a strictly larger value of t than the previous call.
 
 
 
+//        public int ping(int t) {
+//            int ct = t;
+//
+//            RecentCounter recentCounter = new RecentCounter();
+//
+//
+//            do{
+//
+//                if(ct > recentCounter.requests.peek()){
+//                    recentCounter.requests.offer(ct);
+//
+//                    recentCounter.counter ++;
+//                }
+//
+//
+//            }while(ct>t-3000 && ct<t);
+//
+//            return recentCounter.counter;
+//        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  4.The Leetcode file system keeps a log each time some user performs a change folder operation.
+//
+//  The operations are described below:
+//
+//        "../" : Move to the parent folder of the current folder. (If you are already in the main folder, remain in the same folder).
+//        "./" : Remain in the same folder.
+//  "x/" : Move to the child folder named x (This folder is guaranteed to always exist).
+//  You are given a list of strings logs where logs[i] is the operation performed by the user at the ith step.
+//
+//  The file system starts in the main folder, then the operations in logs are performed.
+//
+//  Return the minimum number of operations needed to go back to the main folder after the change folder operations.
+
+
+    public int minOperations(String[] logs) {
+        Stiva<String> stack = new Stiva<>();
+
+        for(int i=0; i<logs.length; i++){
+
+            if(logs[i].contains("d1")){
+                stack.push(logs[i]);
+
+            }else if(logs[i].contains("d2")){
+                stack.push(logs[i]);
+
+            }else if(logs[i].contains("d21")){
+                stack.push(logs[i]);
+            }
+
+            else if((logs[i].contains("d1") || logs[i].contains("d2") || logs[i].contains("d21")) && logs[i].contains("..")){
+
+            }
+        }
+
+
+        return null;
+    }
 
 
 
