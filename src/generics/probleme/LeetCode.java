@@ -172,25 +172,24 @@ public class LeetCode {
     public int minOperations(String[] logs) {
         Stiva<String> stack = new Stiva<>();
 
-        for(int i=0; i<logs.length; i++){
+        for (int i = 0; i < logs.length; i++) {
+            String log = logs[i];
 
-            if(logs[i].contains("d1")){
-                stack.push(logs[i]);
+            if (log.equals("../")) {
 
-            }else if(logs[i].contains("d2")){
-                stack.push(logs[i]);
-
-            }else if(logs[i].contains("d21")){
-                stack.push(logs[i]);
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                }
             }
+            else if (log.equals("./")) {
 
-            else if((logs[i].contains("d1") || logs[i].contains("d2") || logs[i].contains("d21")) && logs[i].contains("..")){
-
+            }
+            else {
+                stack.push(log);
             }
         }
 
-
-        return null;
+        return stack.getSize();
     }
 
 

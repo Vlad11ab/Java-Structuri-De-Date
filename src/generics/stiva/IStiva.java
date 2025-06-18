@@ -12,4 +12,6 @@ public interface IStiva <S extends Comparable<S>>{
 
     Boolean isEmpty();
 
+    int getSize();
+
 }

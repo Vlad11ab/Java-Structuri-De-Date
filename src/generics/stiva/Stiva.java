@@ -59,4 +59,9 @@ public class Stiva<S extends Comparable <S>> implements IStiva<S>{
     public Boolean isEmpty() {
         return head==null;
     }
+
+    @Override
+    public int getSize() {
+        return size;
+    }
 }

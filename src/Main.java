@@ -269,6 +269,10 @@ public class Main {
         System.out.println(rc2.ping(3001));
         System.out.println(rc2.ping(3002));
 
+        System.out.println("-4-");
+        leetCode.minOperations(new String[] {"d1/","d2/","../","d21/","./"});
+        System.out.println(leetCode.minOperations(new String[] {"d1/","d2/","../","d21/","./"}));
 
+        System.out.println(leetCode.minOperations(new String[] {"d1/","d2/","./","d3/","../","d31/"}));
     }
 }
