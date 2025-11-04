@@ -29,4 +29,6 @@ public interface ILista<U extends Comparable<U>>{
     U getData(int position);
 
     int positionIndex();
+
+    U getHead();
 }

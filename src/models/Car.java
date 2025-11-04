@@ -128,4 +128,3 @@ public class Car  implements Comparable<Car>{
 
 //dictionare  key  value
 
-//todo: implementare simpleCollections.queue

@@ -8,91 +8,102 @@ import java.util.Comparator;
 
 public class Lista<U extends Comparable<U>> implements ILista<U>{
     private Node<U> head;
+    private int size;
 
 
 
         @Override
         public void removeStart(){
+
             if(head == null){
                 System.out.println("Empty list");
             }else{
                 head = head.next;
+                size--;
             }
 
         }
 
     @Override
     public void removePos(int position){
-        if(head == null){
+
+        if (head == null) {
             System.out.println("Empty list");
-
-        }else if(position == 0){
+        } else if (position == 0) {
             this.removeStart();
-
-        }else{
+        } else {
             Node<U> current = head;
             int ct = 0;
 
-            while(ct != position - 1){
+            while (ct < position - 1) {
                 current = current.next;
                 ct++;
             }
             current.next =current.next.next;
 
+            size--;
         }
     }
 
     @Override
     public void removeLast(){
-        Node<U> aux = head;
 
-        if(head == null){
+        if (head == null){
             System.out.println("Empty list");
-        }else{
-            while(aux.next.next!=null){
+        }else if (head.next == null) {
+            removeStart();
+        } else {
+
+            Node<U> aux = head;
+
+            while (aux.next.next != null) {
                 aux = aux.next;
             }
             aux.next = null;
+            size--;
         }
+
     }
 
     @Override
     public void addLast(U data){
-        Node<U> lnode = new Node();
-        lnode.data = data;
-        if(head == null){
-            head = lnode;
-            lnode.next = null;
-        }else{
-            Node<U> aux = head;
 
-            while(aux.next != null){
-                aux = aux.next;
-            }
-            aux.next = lnode;
-            lnode.next = null;
-
-
-
-        }
-    }
-
-    @Override
-    public void addPos(U data, int position) {
         Node<U> node = new Node();
         node.data = data;
 
         if (head == null) {
             head = node;
             node.next = null;
-        }else if(position==0){
-
-
-            this.addStart(data);
+            size++;
         } else {
 
+            Node<U> aux = head;
+
+            while (aux.next != null) {
+                aux = aux.next;
+            }
+            aux.next = node;
+            node.next = null;
+
+            size++;
+        }
+    }
+
+    @Override
+    public void addPos(U data, int position) {
+
+        Node<U> node = new Node();
+        node.data = data;
+
+        if (head == null) {
+            head = node;
+            node.next = null;
+        } else if (position==0) {
+            addStart(data);
+        } else {
 
             Node<U> aux = head;
+
             int ct = 0;
             while (ct != position - 1) {
                 aux = aux.next;
@@ -100,30 +111,39 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
             }
             node.next = aux.next;
             aux.next = node;
+
+            size++;
         }
     }
 
     @Override
     public int getSize(){
-        Node<U> aux = head;
-        int nrElemente = 1;
 
-        while(aux.next!=null){
-            aux = aux.next;
-            nrElemente++;
-        }
+            if (head == null) {
+                System.out.println("Error.Empty list");
+                return 0;
+            }
 
-        return nrElemente;
+//            Node<U> aux = head;
+//            int size = 0;
+//
+//            while(aux.next!=null){
+//                 aux = aux.next;
+//                 size++;
+//        }
+
+        return size;
     }
 
     @Override
     public void showList(){
-        if(head == null){
+
+        if (head == null) {
             System.out.println("Lista este goala");
-        }else{
+        } else {
             Node<U> aux = head;
 
-            while(aux != null){
+            while (aux != null) {
                 System.out.println(aux);
                 aux = aux.next;
             }
@@ -134,32 +154,33 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
     @Override
     public void sortList(Comparator<U> comp){
 
-        boolean flag=false;
-        do{
-            flag=true;
-            for(int i=0;i<getSize();i++){
-                if(comp.compare(this.getData(i),this.getData(i+1))>0){
+        boolean flag = false;
+        do {
+            flag = true;
+            for (int i = 0; i < getSize(); i++) {
+                if (comp.compare(this.getData(i),this.getData(i+1))>0) {
                     swap(i, i+1);
                     flag=false;
                 }
             }
 
-        }while (flag==false);
+        } while (flag==false);
 
 
     }
 
     @Override
     public void setData(U data, int position){
+
         Node<U> aux = head;
 
-        if(head == null){
+        if (head == null) {
             head.data = data;
             head.next = null;
-        }else{
+        } else {
             int ct = 1;
 
-            while(ct != position){
+            while (ct != position) {
                 aux = aux.next;
                 ct++;
             }
@@ -169,35 +190,39 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
 
     }
 
-    private void swap(int posA, int posB){
+    private void swap(int posA, int posB) {
+
         U temp = getData(posA);
         setData(getData(posB),posA);
         setData(temp, posB);
     }
 
     @Override
-    public U getData(int position){
-        Node<U> aux = head;
+    public U getData(int position) {
 
-        if(head == null){
+        if (head == null) {
             System.out.println("Empty List");
-        }
-        else{
-            if(position==0){
-                return head.data;
-            }
+            return null;
+        } else if (position < 0 || position >= size) {
+            return null;
+        } else {
+
+            Node<U> aux = head;
             int ct = 0;
-            while(ct != position-1 && aux.next != null){
+
+            while (ct < position) {
                 aux = aux.next;
                 ct++;
             }
 
+            return aux.data;
         }
-        return (U) aux.data;
+
     }
 
     @Override
     public int positionIndex() {
+
         Node<U> aux = head;
         int i = 0;
 
@@ -210,17 +235,31 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
         }while(aux !=null);
     }
 
+    @Override
+    public U getHead() {
+
+        if (head == null) {
+//            System.out.println("Error.Empty list");
+            return null;
+        } else {
+            return (U) head;
+        }
+    }
+
 
     @Override
     public void addStart(U data) {
 
-        Node<U> node = new Node();
+        Node<U> node = new Node<U>();
         node.data = data;
-        if (head == null){
+
+        if (head == null) {
             head = node;
-        }else{
-            node.next=head;
-            head=node;
+            size++;
+        } else {
+            node.next = head;
+            head = node;
+            size++;
         }
 
 

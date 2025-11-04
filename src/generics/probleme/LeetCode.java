@@ -1,11 +1,15 @@
 package generics.probleme;
 
 
+import generics.coada.ICoada;
+import generics.lista.Lista;
 import generics.stiva.Stiva;
 import generics.coada.Coada;
+import generics.utils.Node;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LeetCode {
 
@@ -193,8 +197,17 @@ public class LeetCode {
     }
 
 
+// 83. Remove Duplicates from Sorted List
+//Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
 
 
+//    public void removeDuplicate(){
+//
+//        Lista<Integer> lista83 = new Lista<>();
+//        Node<Integer> current = lista83.get
+//
+//
+//    }
 
 
 

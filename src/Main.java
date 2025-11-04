@@ -1,6 +1,8 @@
 import generics.coada.Coada;
 import generics.coada.ICoada;
 import generics.lista.ILista;
+import generics.multime.IMultime;
+import generics.multime.Multime;
 import generics.probleme.LeetCode;
 import generics.probleme.RecentCounter;
 import generics.probleme.RecentCounter2;
@@ -214,6 +216,11 @@ public class Main {
         ILista<String> genericList = new generics.lista.Lista<>();
         genericList.addStart("test");
         genericList.addStart("ce mai faci");
+        genericList.getData(0);
+        genericList.getData(1);
+        genericList.getData(2);
+        genericList.getData(3);
+        genericList.getData(4);
         genericList.showList();
 
         System.out.println("=====================GenericQueue===================");
@@ -274,5 +281,15 @@ public class Main {
         System.out.println(leetCode.minOperations(new String[] {"d1/","d2/","../","d21/","./"}));
 
         System.out.println(leetCode.minOperations(new String[] {"d1/","d2/","./","d3/","../","d31/"}));
+
+
+        System.out.println("===============Set=============");
+        IMultime<Integer> set = new Multime<>();
+        set.add(0);
+        set.add(1);
+        set.add(2);
+        set.add(3);
+
+        System.out.println("test");
     }
 }
