@@ -1,5 +1,6 @@
 package generics.lista;
 
+import generics.utils.Node;
 import models.Car;
 
 import java.util.Comparator;
@@ -20,6 +21,8 @@ public interface ILista<U extends Comparable<U>>{
 
     int getSize();
 
+    U getNode(int position);
+
     void showList();
 
     void sortList(Comparator<U> comp);
@@ -28,7 +31,7 @@ public interface ILista<U extends Comparable<U>>{
 
     U getData(int position);
 
-    int positionIndex();
+    Node<U> reverseList();
 
-    U getHead();
+    Node<U> getHead();
 }

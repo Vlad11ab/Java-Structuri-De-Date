@@ -98,8 +98,10 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
         if (head == null) {
             head = node;
             node.next = null;
-        } else if (position==0) {
+        } else if (position <= 0) {
             addStart(data);
+        } else if (position > size) {
+            addLast(data);
         } else {
 
             Node<U> aux = head;
@@ -136,6 +138,32 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
     }
 
     @Override
+    public U getNode(int position) {
+
+            if (position <= 0 || position > size) {
+                System.out.println(position + ": invalid position!");
+                return null;
+            } else {
+                Node<U> current = head;
+                int index = 1;
+
+                while (current != null && index <= position) {
+
+                    if (index == position) {
+                        return (U) current;
+                    }
+
+                    current = current.next;
+                    index++;
+                }
+
+            }
+
+        System.out.println("Node not found");
+            return null;
+    }
+
+    @Override
     public void showList(){
 
         if (head == null) {
@@ -150,6 +178,9 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
 
         }
     }
+    // 45 67 12 1=>45 67 12  1=>45 12 67 1 => 45 12  1 67
+    // 45 12 1 67=>12 45  1  67=> 12  1  45 67=> 12 1 45 67
+    //
 
     @Override
     public void sortList(Comparator<U> comp){
@@ -157,15 +188,14 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
         boolean flag = false;
         do {
             flag = true;
-            for (int i = 0; i < getSize(); i++) {
+            for (int i = 0; i < getSize()-1; i++) {
                 if (comp.compare(this.getData(i),this.getData(i+1))>0) {
-                    swap(i, i+1);
-                    flag=false;
+                    swap (i, i+1);
+                    flag = false;
                 }
             }
 
-        } while (flag==false);
-
+        } while (flag == false);
 
     }
 
@@ -174,21 +204,22 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
 
         Node<U> aux = head;
 
-        if (head == null) {
+        if (position > size) {
+            System.out.println("Error. " + position + " is out of list");
+        } else if (position <= 0) {
             head.data = data;
-            head.next = null;
         } else {
-            int ct = 1;
+                int ct = 0;
 
-            while (ct != position) {
-                aux = aux.next;
-                ct++;
+                while (ct != position) {
+                    aux = aux.next;
+                    ct++;
+                }
+
+                aux.data = data;
             }
-
-            aux.data = data;
         }
 
-    }
 
     private void swap(int posA, int posB) {
 
@@ -196,6 +227,8 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
         setData(getData(posB),posA);
         setData(temp, posB);
     }
+
+
 
     @Override
     public U getData(int position) {
@@ -215,34 +248,34 @@ public class Lista<U extends Comparable<U>> implements ILista<U>{
                 ct++;
             }
 
+//            System.out.println(aux.data + " testez getdata");
             return aux.data;
         }
 
     }
 
     @Override
-    public int positionIndex() {
+    public Node<U> reverseList() {
 
-        Node<U> aux = head;
-        int i = 0;
+            Node<U> prev = null;
 
-        do {
-            i++;
-            aux = aux.next;
-            return i;
-
-
-        }while(aux !=null);
+            while (head != null) {
+                Node<U> nextNode = head.next;
+                prev = head;
+                head = nextNode;
+            }
+            return prev;
     }
 
+
     @Override
-    public U getHead() {
+    public Node<U> getHead() {
 
         if (head == null) {
 //            System.out.println("Error.Empty list");
             return null;
         } else {
-            return (U) head;
+            return head;
         }
     }
 

@@ -3,12 +3,11 @@ import generics.coada.ICoada;
 import generics.lista.ILista;
 import generics.multime.IMultime;
 import generics.multime.Multime;
-import generics.probleme.LeetCode;
-import generics.probleme.RecentCounter;
-import generics.probleme.RecentCounter2;
+import generics.probleme.*;
 import generics.stiva.IStiva;
 import generics.stiva.Stiva;
 import models.Car;
+import models.comparators.CompareCarById;
 import models.comparators.CompareCarByPrice;
 import simpleCollections.stack.Stack;
 import simpleCollections.stack.StackImpl;
@@ -19,6 +18,7 @@ import simpleCollections.simplelist.Lista;
 import simpleCollections.simplelist.Node;
 
 import javax.swing.*;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -213,15 +213,31 @@ public class Main {
 
         System.out.println("=====================GenericList====================");
 
-        ILista<String> genericList = new generics.lista.Lista<>();
-        genericList.addStart("test");
-        genericList.addStart("ce mai faci");
+        ILista<Car> genericList = new generics.lista.Lista<>();
+        genericList.addStart(c1);
+        genericList.addStart(c2);
+        genericList.addLast(c3);
+        genericList.addPos(c5,3);
+        genericList.addPos(c7,4);
+        genericList.addPos(c22,5);
         genericList.getData(0);
         genericList.getData(1);
         genericList.getData(2);
         genericList.getData(3);
         genericList.getData(4);
         genericList.showList();
+        genericList.setData(c22, 0);
+        genericList.getNode(0);
+        genericList.getNode(1);
+        genericList.getNode(2);
+        genericList.getNode(10);
+        System.out.println("Afisez genericList");
+        genericList.showList();
+        System.out.println("Testez sortList =>");
+        genericList.addStart(c21);
+        genericList.sortList(new CompareCarById());
+        genericList.showList();
+
 
         System.out.println("=====================GenericQueue===================");
 
@@ -253,7 +269,18 @@ public class Main {
         genericStack.peek();
 
 
-        System.out.println("===========================LeetCode===================");
+        System.out.println("===============Set=============");
+
+        IMultime<Integer> set = new Multime<>();
+        set.add(0);
+        set.add(1);
+        set.add(2);
+        set.add(3);
+
+        System.out.println("test");
+
+
+        System.out.println("======================================LeetCode===================================");
         System.out.println("-1-");
         LeetCode leetCode = new LeetCode();
         System.out.println(leetCode.isValid("([])"));
@@ -282,14 +309,40 @@ public class Main {
 
         System.out.println(leetCode.minOperations(new String[] {"d1/","d2/","./","d3/","../","d31/"}));
 
+        System.out.println("-234PalindromeList-");
+        PalindromeLinkedList pll = new PalindromeLinkedList();
+        ILista<Integer> lista234_1 = pll.getLista234();
+        lista234_1.addLast(1);
+        lista234_1.addLast(2);
+        lista234_1.addLast(2);
+        lista234_1.addLast(1);
+        pll.isPalindrome(lista234_1.getHead());
 
-        System.out.println("===============Set=============");
-        IMultime<Integer> set = new Multime<>();
-        set.add(0);
-        set.add(1);
-        set.add(2);
-        set.add(3);
+        PalindromeLinkedList pll2 = new PalindromeLinkedList();
+        ILista<Integer> lista234_2 = pll2.getLista234();
+        lista234_2.addLast(1);
+        lista234_2.addLast(2);
+        pll2.isPalindrome(lista234_2.getHead());
 
-        System.out.println("test");
+        System.out.println("-AddTwoNumbersII-");
+        AddTwoNumbersII atn2 = new AddTwoNumbersII();
+
+        ILista<Integer> lista445_1 = new generics.lista.Lista<>();
+        lista445_1.addLast(7);
+        lista445_1.addLast(2);
+        lista445_1.addLast(4);
+        lista445_1.addLast(3);
+
+        ILista<Integer> lista445_2 = new generics.lista.Lista<>();
+        lista445_2.addLast(5);
+        lista445_2.addLast(6);
+        lista445_2.addLast(4);
+
+        atn2.add445(lista445_1, lista445_2);
+
+
+
     }
+
+
 }
